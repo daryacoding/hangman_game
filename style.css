@@ -2,3 +2,20 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: #FFDAB9;
+}
+
+button{
+    background-color: transparent;
+	border: 2px solid #EE82EE;
+	color:whitesmoke;
+	padding: 20px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1em;
+	display: inline-block;
+	width: 10%;
+	border-radius: 5px;
+	box-shadow: 3px 3px 8px 0 #000; /* h-offset v-offset blur spread color */S
+}
