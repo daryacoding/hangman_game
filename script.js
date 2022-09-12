@@ -74,6 +74,90 @@ e.addEventListener('click', (evt) =>{
     containsLetter('e');
 })
 
+f.addEventListener('click', (evt) =>{
+    containsLetter('f');
+})
+
+g.addEventListener('click', (evt) =>{
+    containsLetter('g');
+})
+
+h.addEventListener('click', (evt) =>{
+    containsLetter('h');
+})
+
+i.addEventListener('click', (evt) =>{
+    containsLetter('i');
+})
+
+j.addEventListener('click', (evt) =>{
+    containsLetter('j');
+})
+
+k.addEventListener('click', (evt) =>{
+    containsLetter('k');
+})
+
+l.addEventListener('click', (evt) =>{
+    containsLetter('l');
+})
+
+m.addEventListener('click', (evt) =>{
+    containsLetter('m');
+})
+
+n.addEventListener('click', (evt) =>{
+    containsLetter('n');
+})
+
+o.addEventListener('click', (evt) =>{
+    containsLetter('o');
+})
+
+p.addEventListener('click', (evt) =>{
+    containsLetter('p');
+})
+
+q.addEventListener('click', (evt) =>{
+    containsLetter('q');
+})
+
+r.addEventListener('click', (evt) =>{
+    containsLetter('r');
+})
+
+s.addEventListener('click', (evt) =>{
+    containsLetter('s');
+})
+
+t.addEventListener('click', (evt) =>{
+    containsLetter('t');
+})
+
+u.addEventListener('click', (evt) =>{
+    containsLetter('u');
+})
+
+v.addEventListener('click', (evt) =>{
+    containsLetter('v');
+})
+
+w.addEventListener('click', (evt) =>{
+    containsLetter('w');
+})
+
+x.addEventListener('click', (evt) =>{
+    containsLetter('x');
+})
+
+y.addEventListener('click', (evt) =>{
+    containsLetter('y');
+})
+
+z.addEventListener('click', (evt) =>{
+    containsLetter('z');
+})
+
 /* function easyMode (){
     // 1. Create the button
     const easyButton = document.createElement("button");
