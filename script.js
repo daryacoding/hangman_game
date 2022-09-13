@@ -8,6 +8,7 @@ const word = words[randomWord];
 const gameBoard = document.querySelector('.game-board');
 let guessesLeft = 10;
 let guesses = document.querySelector('.guesses');
+const board = document.querySelector('.board');
 
 const a = document.querySelector('.a');
 const b = document.querySelector('.b');
@@ -39,6 +40,7 @@ const z = document.querySelector('.z');
 /* startButton.addEventListener('click', (evt) =>{
     startGame();
 }) */
+//board.innerHTML = "hello";
 
 function containsLetter(char){
     let count = 0;
@@ -46,6 +48,7 @@ function containsLetter(char){
         if (word.charAt(i) == char){
             count++;
             guesses.innerHTML = `Correct! You have ${guessesLeft} guesses left.`
+            //wordOnBoard.split
         }
     }
     if (!word.includes(char)){
