@@ -10,32 +10,6 @@ let guessesLeft = 10;
 let guesses = document.querySelector('.guesses');
 const board = document.querySelector('.board');
 
-const a = document.querySelector('.a');
-const b = document.querySelector('.b');
-const c = document.querySelector('.c');
-const d = document.querySelector('.d');
-const e = document.querySelector('.e');
-const f = document.querySelector('.f');
-const g = document.querySelector('.g');
-const h = document.querySelector('.h');
-const i = document.querySelector('.i');
-const j = document.querySelector('.j');
-const k = document.querySelector('.k');
-const l = document.querySelector('.l');
-const m = document.querySelector('.m');
-const n = document.querySelector('.n');
-const o = document.querySelector('.o');
-const p = document.querySelector('.p');
-const q = document.querySelector('.q');
-const r = document.querySelector('.r');
-const s = document.querySelector('.s');
-const t = document.querySelector('.t');
-const u = document.querySelector('.u');
-const v = document.querySelector('.v');
-const w = document.querySelector('.w');
-const x = document.querySelector('.x');
-const y = document.querySelector('.y');
-const z = document.querySelector('.z');
 
 /* startButton.addEventListener('click', (evt) =>{
     startGame();
@@ -57,7 +31,35 @@ function containsLetter(char){
     }
 } 
 
-a.addEventListener('click', (evt) =>{
+for (let i = 65; i < 91; i++) {
+    let button = document.createElement("button");
+    button.classList.add("letters");
+    //Number to ASCII[A-Z]
+    button.innerText = String.fromCharCode(i);
+    //character button click
+    /* button.addEventListener("click", () => {
+      let charArray = chosenWord.split("");
+      let dashes = document.getElementsByClassName("dashes");
+      //if array contains clciked value replace the matched dash with letter else dram on canvas
+      //if (charArray.includes(button.innerText)) {
+        //charArray.forEach((char, index) => {
+          //if character in array is same as clicked button
+          //if (char === button.innerText) {
+            //replace dash with letter
+            //dashes[index].innerText = char;
+            //increment counter
+            //winCount += 1;
+            //if winCount equals word lenfth
+           // if (winCount == charArray.length) {
+              //resultText.innerHTML = `<h2 class='win-msg'>You Win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
+              //block all buttons
+              //blocker();
+            //}
+          //}
+        }); */
+        guesses.append(button);
+    }
+/* a.addEventListener('click', (evt) =>{
     containsLetter('a');
 })
 
@@ -159,7 +161,7 @@ y.addEventListener('click', (evt) =>{
 
 z.addEventListener('click', (evt) =>{
     containsLetter('z');
-})
+}) */
 
 /* function easyMode (){
     // 1. Create the button
@@ -205,14 +207,3 @@ function hardMode (){
 
     });
 } */
-
-function startGame(){
-    gameBoard.innerHTML = `You have ${guessesLeft} guesses`;
-    //easyMode();
-    //mediumMode();
-    //hardMode();
-}
-
-function guess(char){
-        word.includes(char);
-}
