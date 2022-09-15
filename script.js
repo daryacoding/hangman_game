@@ -6,7 +6,8 @@ const word = words[randomWord];
 
 //const startButton = document.querySelector('.start-button');
 const gameBoard = document.querySelector('.game-board');
-let guessesLeft = 10;
+const wordDisplayed = document.querySelector('.display');
+//let guessesLeft = 10;
 let guesses = document.querySelector('.guesses');
 const board = document.querySelector('.board');
 
@@ -31,12 +32,21 @@ function containsLetter(char){
     }
 } 
 
-for (let i = 65; i < 91; i++) {
-    let button = document.createElement("button");
-    button.classList.add("letters");
-    button.innerText = String.fromCharCode(i);
-    guesses.append(button);
+//called when page loads
+const loadGame = () => {
+    for (let i = 65; i < 91; i++) {
+        let button = document.createElement("button");
+        button.classList.add("letters");
+        button.innerText = String.fromCharCode(i);
+        gameBoard.append(button);
+    }
+    let displayedWord = "";
+    for (let i = 0; i<word.length; i++){
+        
+    }
 }
+//wordDisplayed.innerHTML = `hello`;
+window.onload = loadGame;
 
 /* function easyMode (){
     // 1. Create the button
