@@ -40,12 +40,13 @@ const loadGame = () => {
         button.innerText = String.fromCharCode(i);
         gameBoard.append(button);
     }
-    let displayedWord = "";
-    for (let i = 0; i<word.length; i++){
-        
+    let wordBoard = "";
+    for (let i = 0; i < word.length; i++) {
+        wordBoard += "_ ";
     }
+    wordDisplayed.innerHTML = wordBoard;
 }
-//wordDisplayed.innerHTML = `hello`;
+
 window.onload = loadGame;
 
 /* function easyMode (){
