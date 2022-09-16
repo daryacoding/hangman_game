@@ -22,7 +22,8 @@ function containsLetter(char){
     for (let i = 0; i<words.length; i++){
         if (word.charAt(i) == char){
             count++;
-            guesses.innerHTML = `Correct! You have ${guessesLeft} guesses left.`
+            //guesses.innerHTML = `Correct! You have ${guessesLeft} guesses left.`
+            
             //wordOnBoard.split
         }
     }
