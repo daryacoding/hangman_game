@@ -11,6 +11,8 @@ const wordDisplayed = document.querySelector('.display');
 let guesses = document.querySelector('.guesses');
 const board = document.querySelector('.board');
 
+let count = 0;
+let winCount = 0;
 
 /* startButton.addEventListener('click', (evt) =>{
     startGame();
@@ -26,6 +28,7 @@ function containsLetter(char){
             
             //wordOnBoard.split
         }
+        let index = word.indexOf(char);
     }
     if (!word.includes(char)){
         guessesLeft--;
@@ -40,12 +43,28 @@ const loadGame = () => {
         button.classList.add("letters");
         button.innerText = String.fromCharCode(i);
         gameBoard.append(button);
+        button.addEventListener('click', () => {
+            let letterArray = word.split("");
+            let dashes = document.getElementsByClassName('dashes');
+            if (letterArray.includes(button.innerText)){
+                letterArray.forEach((char, index) => {
+                    if (char === button.innerText){
+                        dashes[index].innerText = char;
+                        winCount++;
+                        if (winCount == letterArray.length){
+                            
+                        }
+                    }
+                })
+            }
+        })
     }
-    let wordBoard = "";
+   /*  let wordBoard = "";
     for (let i = 0; i < word.length; i++) {
         wordBoard += "_ ";
-    }
-    wordDisplayed.innerHTML = wordBoard;
+    } */
+    //wordDisplayed.innerHTML = wordBoard;
+    
 }
 
 window.onload = loadGame;
