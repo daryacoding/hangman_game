@@ -1,8 +1,8 @@
-const words = ['flapjack', 'eraser', 'ginger'];
+const words = ['FLAPJACK', 'GINGER', 'ERASER'];
 const letters = 'abcdefghijklmnopqrstuvwxyz';
 
 let randomWord = Math.floor(Math.random() * words.length);
-const word = words[randomWord];
+let word = words[randomWord];
 
 //const startButton = document.querySelector('.start-button');
 const gameBoard = document.querySelector('.game-board');
@@ -50,19 +50,18 @@ const loadGame = () => {
         wordDisplayed.innerHTML = dashes;
 
         button.addEventListener('click', () => {
-            let letterArray = word.split("");
-            if (letterArray.includes(button.innerText)){
-                letterArray.forEach((char, index) => {
-                    if (char === button.innerText){
-                        dashes.replace(index, char);
-                        winCount++;
-                        if (winCount == letterArray.length){
-                            //dashes
-                        }
-                    }
-                })
+            dashes = [...dashes];
+            let wordArray = [...word];
+            console.log(button.innerText)
+           for(let i = 0; i < word.length; i++){
+            if (word[i] === button.innerText){
+                dashes[i] = button.innerText;
             }
-        })
+           }
+           let currentDashes = dashes.join('');
+           console.log(currentDashes)
+           wordDisplayed.innerHTML = currentDashes; 
+        });
     }
    /*  let wordBoard = "";
     for (let i = 0; i < word.length; i++) {
