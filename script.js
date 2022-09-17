@@ -43,16 +43,21 @@ const loadGame = () => {
         button.classList.add("letters");
         button.innerText = String.fromCharCode(i);
         gameBoard.append(button);
+        let dashes = "";
+        for (let i = 0; i < word.length; i++) {
+            dashes += '_ ';
+        }
+        wordDisplayed.innerHTML = dashes;
+
         button.addEventListener('click', () => {
             let letterArray = word.split("");
-            let dashes = document.getElementsByClassName('dashes');
             if (letterArray.includes(button.innerText)){
                 letterArray.forEach((char, index) => {
                     if (char === button.innerText){
-                        dashes[index].innerText = char;
+                        dashes.replace(index, char);
                         winCount++;
                         if (winCount == letterArray.length){
-                            
+                            //dashes
                         }
                     }
                 })
