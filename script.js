@@ -7,6 +7,7 @@ let word = words[randomWord];
 //const startButton = document.querySelector('.start-button');
 const gameBoard = document.querySelector('.game-board');
 const wordDisplayed = document.querySelector('.display');
+const letterContainer = document.querySelector('.letter-container');
 //let guessesLeft = 10;
 let guesses = document.querySelector('.guesses');
 const board = document.querySelector('.board');
@@ -19,48 +20,42 @@ let winCount = 0;
 }) */
 //board.innerHTML = "hello";
 
-function containsLetter(char){
-    let count = 0;
-    for (let i = 0; i<words.length; i++){
-        if (word.charAt(i) == char){
-            count++;
-            //guesses.innerHTML = `Correct! You have ${guessesLeft} guesses left.`
-            
-            //wordOnBoard.split
+let dashes = "";
+        for (let i = 0; i < word.length; i++) {
+            dashes += '_';
         }
-        let index = word.indexOf(char);
-    }
-    if (!word.includes(char)){
-        guessesLeft--;
-        guesses.innerHTML = `Incorrect! You have ${guessesLeft} guesses left.`
-    }
-} 
-
 //called when page loads
 const loadGame = () => {
     for (let i = 65; i < 91; i++) {
         let button = document.createElement("button");
         button.classList.add("letters");
         button.innerText = String.fromCharCode(i);
-        gameBoard.append(button);
-        let dashes = "";
-        for (let i = 0; i < word.length; i++) {
-            dashes += '_ ';
-        }
+        letterContainer.append(button);
+        
         wordDisplayed.innerHTML = dashes;
-
-        button.addEventListener('click', () => {
+        
+        button.addEventListener('click', function() {
             dashes = [...dashes];
-            let wordArray = [...word];
             console.log(button.innerText)
            for(let i = 0; i < word.length; i++){
             if (word[i] === button.innerText){
                 dashes[i] = button.innerText;
+                winCount++;
             }
            }
-           let currentDashes = dashes.join('');
-           console.log(currentDashes)
-           wordDisplayed.innerHTML = currentDashes; 
+           if (!word.includes(button.innerText)){
+            count++;
+            console.log(count);
+           }
+           dashes = dashes.join('');
+           wordDisplayed.innerHTML = dashes;
+           window.dashes = dashes;
+           if (count == 5){
+                guesses.innerHTML = "You lose";
+           }
+           if (winCount == word.length){
+                guesses.innerHTML = "You win!"
+           }
         });
     }
    /*  let wordBoard = "";
