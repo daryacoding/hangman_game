@@ -15,7 +15,7 @@ let guesses = document.querySelector('.guesses');
 const board = document.querySelector('.board');
 const hangmanContainer = document.querySelector('.hangman-container');
 
-let guessesLeft = 5;
+let count = 0;
 let winCount = 0;
 
 /* startButton.addEventListener('click', (evt) =>{
@@ -47,19 +47,13 @@ const loadGame = () => {
             }
            }
            if (!word.includes(button.innerText)){
-            guessesLeft--;
-            guesses.innerHTML = `you have ${guessesLeft} left`;
-            const div = document.createElement('div');
-            div.style.backgroundColor ='white';
-            div.style.position = 'absolute';
-
-
-            hangmanContainer.appendChild(div);
+            count++;
+            drawMan(count);
            }
            dashes = dashes.join('');
            wordDisplayed.innerHTML = dashes;
            window.dashes = dashes;
-           if (guessesLeft == 0){
+           if (count == 6){
                 alert("you lose!");
            }
            if (winCount == word.length){
@@ -78,6 +72,80 @@ const loadGame = () => {
 
 
 window.onload = loadGame;
+
+
+const canvasCreator = () => {
+    let context = canvas.getContext("2d");
+    context.beginPath();
+    context.strokeStyle = "#000";
+    context.lineWidth = 2;
+    //For drawing lines
+    const drawLine = (fromX, fromY, toX, toY) => {
+        context.moveTo(fromX, fromY);
+        context.lineTo(toX, toY);
+        context.stroke();
+    };
+    const head = () => {
+        context.beginPath();
+        context.arc(180, 40, 10, 0, Math.PI * 2, true);
+        context.stroke();
+    };
+    const body = () => {
+        drawLine(180, 50, 180, 80);
+    };
+    const leftArm = () => {
+        drawLine(180, 50, 50, 70);
+    };
+    const rightArm = () => {
+        drawLine(180, 50, 90, 70);
+    };
+    const leftLeg = () => {
+        drawLine(180, 80, 50, 110);
+    };
+    const rightLeg = () => {
+        drawLine(180, 80, 90, 110);
+    };
+    //initial frame
+    const initialDrawing = () => {
+      //clear canvas
+      context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+      //bottom line
+      drawLine(10, 130, 130, 130);
+      //left line
+      drawLine(10, 10, 10, 131);
+      //top line
+      drawLine(10, 10, 70, 10);
+      //small top line
+      drawLine(70, 10, 70, 20);
+    };
+    return { initialDrawing, head, body, leftArm, rightArm, leftLeg, rightLeg };
+  };
+  //draw the man
+  const drawMan = (count) => {
+    let { head, body, leftArm, rightArm, leftLeg, rightLeg } = canvasCreator();
+    switch (count) {
+        case 1:
+            head();
+            break;
+        case 2:
+            body();
+            break;
+        case 3:
+            leftArm();
+            break;
+        case 4:
+            rightArm();
+            break;
+        case 5:
+            leftLeg();
+            break;
+        case 6:
+            rightLeg();
+            break;
+        default:
+        break;
+    }
+};
 
 /* function easyMode (){
     // 1. Create the button
