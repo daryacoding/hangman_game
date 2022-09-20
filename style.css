@@ -73,4 +73,16 @@ button:disabled{
     grid-row: 1/4;
     background-image: url("hangman.png");
     background-repeat: no-repeat;
+}
+#new-game{
+    display: none;
+    margin: auto;
+    width: 5%;
+    justify-content: center;
+    background-color: #957DAD;
+    color: #ffffff;
+    padding: 0.6em 1.2em;
+}
+#new-game:hover{
+    background-color: #662d91;
 }    
