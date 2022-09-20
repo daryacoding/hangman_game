@@ -3,8 +3,8 @@ const words = ['FLAPJACK', 'GINGER', 'ERASER', 'FOXGLOVE', 'MEGAHERTZ', 'BANDWAG
 ];
 const letters = 'abcdefghijklmnopqrstuvwxyz';
 
-let randomWord = Math.floor(Math.random() * words.length);
-let word = words[randomWord];
+/* let randomWord = Math.floor(Math.random() * words.length);
+let word = words[randomWord]; */
 
 //const startButton = document.querySelector('.start-button');
 const gameBoard = document.querySelector('.game-board');
@@ -23,12 +23,23 @@ let winCount = 0;
 }) */
 //board.innerHTML = "hello";
 
-let dashes = "";
+/* let dashes = "";
+        for (let i = 0; i < word.length; i++) {
+            dashes += '_';
+        } */
+//called when page loads
+const loadGame = () => {
+    winCount = 0;
+    count = 0;
+    let randomWord = Math.floor(Math.random() * words.length);
+    let word = words[randomWord];
+    let dashes = "";
         for (let i = 0; i < word.length; i++) {
             dashes += '_';
         }
-//called when page loads
-const loadGame = () => {
+    letterContainer.classList.remove('hide');
+    letterContainer.innerHTML = "";
+    guesses.innerHTML = "";
     for (let i = 65; i < 91; i++) {
         let button = document.createElement("button");
         button.classList.add("letters");
@@ -54,25 +65,38 @@ const loadGame = () => {
            wordDisplayed.innerHTML = dashes;
            window.dashes = dashes;
            if (count == 6){
-                alert("you lose!");
+            guesses.innerHTML = `You lose! The word was ${word}`;
+            blockAllButtons();
+            newGame();
            }
            if (winCount == word.length){
                 guesses.innerHTML = "You win!";
+                blockAllButtons();
+                newGame();
            }
            button.disabled = true;
         });
     }
-   /*  let wordBoard = "";
-    for (let i = 0; i < word.length; i++) {
-        wordBoard += "_ ";
-    } */
-    //wordDisplayed.innerHTML = wordBoard;
-    
+    let { initialDrawing } = canvasCreator();
+  //initialDrawing would draw the frame
+  initialDrawing();
 }
-
 
 window.onload = loadGame;
 
+const blockAllButtons = () => {
+    const buttons = document.getElementsByTagName('button');
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+    }
+}
+
+const newGame = () => {
+    const newGameBtn = document.createElement('button');
+    newGameBtn.innerText = 'New Game';
+    newGameBtn.addEventListener('click', loadGame);
+    gameBoard.append(newGameBtn)
+}
 
 const canvasCreator = () => {
     let context = canvas.getContext("2d");
@@ -87,36 +111,28 @@ const canvasCreator = () => {
     };
     const head = () => {
         context.beginPath();
-        context.arc(180, 40, 10, 0, Math.PI * 2, true);
+        context.arc(185, 45, 10, 0, Math.PI * 2, true);
         context.stroke();
     };
     const body = () => {
-        drawLine(180, 50, 180, 80);
+        drawLine(185, 55, 185, 120);
     };
     const leftArm = () => {
-        drawLine(180, 50, 50, 70);
+        drawLine(185, 70, 140, 100);
     };
     const rightArm = () => {
-        drawLine(180, 50, 90, 70);
+        drawLine(185, 70, 230, 100);
     };
     const leftLeg = () => {
-        drawLine(180, 80, 50, 110);
+        drawLine(185, 120, 70, 300);
     };
     const rightLeg = () => {
-        drawLine(180, 80, 90, 110);
+        drawLine(185, 120, 300, 300);
     };
     //initial frame
     const initialDrawing = () => {
       //clear canvas
       context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-      //bottom line
-      drawLine(10, 130, 130, 130);
-      //left line
-      drawLine(10, 10, 10, 131);
-      //top line
-      drawLine(10, 10, 70, 10);
-      //small top line
-      drawLine(70, 10, 70, 20);
     };
     return { initialDrawing, head, body, leftArm, rightArm, leftLeg, rightLeg };
   };
@@ -146,48 +162,3 @@ const canvasCreator = () => {
         break;
     }
 };
-
-/* function easyMode (){
-    // 1. Create the button
-    const easyButton = document.createElement("button");
-    easyButton.innerHTML = "Easy";
-
-    // 2. Append somewhere
-    const startBoard = document.querySelector('.start-game')
-    startBoard.appendChild(easyButton);
-
-    // 3. Add event handler
-    easyButton.addEventListener ("click", function() {
-    alert("did something");
-    });
-}
-function mediumMode (){
-    // 1. Create the button
-    const mediumButton = document.createElement("button");
-    mediumButton.innerHTML = "Medium";
-
-    // 2. Append somewhere
-    const startBoard = document.querySelector(".start-game")
-    startBoard.appendChild(mediumButton);
-
-    // 3. Add event handler
-    mediumButton.addEventListener ("click", function() {
-    guesses = 7
-    });
-}
-
-function hardMode (){
-    // 1. Create the button
-    const hardButton = document.createElement("button");
-    hardButton.innerHTML = "Hard";
-
-    // 2. Append somewhere
-    const startBoard = document.querySelector(".start-game")
-    startBoard.appendChild(hardButton);
-
-    // 3. Add event handler
-    hardButton.addEventListener ("click", function() {
-    guesses = 5;
-
-    });
-} */
