@@ -1,4 +1,6 @@
-const words = ['FLAPJACK', 'GINGER', 'ERASER'];
+const words = ['FLAPJACK', 'GINGER', 'ERASER', 'FOXGLOVE', 'MEGAHERTZ', 'BANDWAGON',
+'HAPHAZARD', 'KNAPSACK', 'STRONGHOLD'
+];
 const letters = 'abcdefghijklmnopqrstuvwxyz';
 
 let randomWord = Math.floor(Math.random() * words.length);
@@ -11,8 +13,9 @@ const letterContainer = document.querySelector('.letter-container');
 //let guessesLeft = 10;
 let guesses = document.querySelector('.guesses');
 const board = document.querySelector('.board');
+const hangmanContainer = document.querySelector('.hangman-container');
 
-let count = 0;
+let guessesLeft = 5;
 let winCount = 0;
 
 /* startButton.addEventListener('click', (evt) =>{
@@ -44,18 +47,25 @@ const loadGame = () => {
             }
            }
            if (!word.includes(button.innerText)){
-            count++;
-            console.log(count);
+            guessesLeft--;
+            guesses.innerHTML = `you have ${guessesLeft} left`;
+            const div = document.createElement('div');
+            div.style.backgroundColor ='white';
+            div.style.position = 'absolute';
+
+
+            hangmanContainer.appendChild(div);
            }
            dashes = dashes.join('');
            wordDisplayed.innerHTML = dashes;
            window.dashes = dashes;
-           if (count == 5){
-                guesses.innerHTML = "You lose";
+           if (guessesLeft == 0){
+                alert("you lose!");
            }
            if (winCount == word.length){
-                guesses.innerHTML = "You win!"
+                guesses.innerHTML = "You win!";
            }
+           button.disabled = true;
         });
     }
    /*  let wordBoard = "";
@@ -65,6 +75,7 @@ const loadGame = () => {
     //wordDisplayed.innerHTML = wordBoard;
     
 }
+
 
 window.onload = loadGame;
 
