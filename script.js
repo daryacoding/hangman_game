@@ -50,7 +50,6 @@ const loadGame = () => {
         
         button.addEventListener('click', function() {
             dashes = [...dashes];
-            console.log(button.innerText)
            for(let i = 0; i < word.length; i++){
             if (word[i] === button.innerText){
                 dashes[i] = button.innerText;
