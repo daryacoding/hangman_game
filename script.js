@@ -14,7 +14,7 @@ const letterContainer = document.querySelector('.letter-container');
 let guesses = document.querySelector('.guesses');
 const board = document.querySelector('.board');
 const hangmanContainer = document.querySelector('.hangman-container');
-
+const newButton = document.querySelector('.new');
 let count = 0;
 let winCount = 0;
 
@@ -94,8 +94,12 @@ const blockAllButtons = () => {
 const newGame = () => {
     const newGameBtn = document.createElement('button');
     newGameBtn.innerText = 'New Game';
+    newGameBtn.style.width = '100px';
+    newGameBtn.style.height = '50px';
+    newGameBtn.style.left = '100px';
+    newGameBtn.style.right = '150px';
+    document.body.append(newGameBtn);
     newGameBtn.addEventListener('click', loadGame);
-    gameBoard.append(newGameBtn)
 }
 
 const canvasCreator = () => {

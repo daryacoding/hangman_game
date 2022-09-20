@@ -4,8 +4,10 @@ suggesting letters one at a time. With each wrong guess, the hangman is drawn fr
 head to toe until the player loses.
 
 # Built With
-HTML, CSS, JavaScript
+HTML, CSS, JavaScript, uses html canvas to draw hangman. Used Visual Studio Code.
 
-# installation instructions
+# functions used
+String functions used to search the word for the right letters. Canvas functions are used to draw the hangman.
 
 # unsolved problems
+Need to hide the new game button after a new game is initiated.
